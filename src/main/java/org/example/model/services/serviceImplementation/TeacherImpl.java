@@ -14,11 +14,10 @@ public class TeacherImpl implements TeacherServices {
         List<Courses> coursesList = teacher.getCourses();
         for (int i = 0; i < coursesList.size(); i++) {
             if (teacher.getCourses().get(i).getCourseName().equalsIgnoreCase(courseName)) {
-                System.out.println(teacher.getName() + " can take " + courseName);
+                System.out.println(teacher.getName() + " currently takes this " + courseName);
             }
         }
         staffUtils.addCourseToTeacher(teacher, courseName, courseCode);
-        System.out.println(teacher.getName() + "can now take" + coursesList);
     }
 }
 

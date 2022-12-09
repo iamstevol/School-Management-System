@@ -39,7 +39,8 @@ public class Main {
         List<Student> studentList = new ArrayList<>(Arrays.asList(student1, student2,  student3));
 
         //Applicant
-        Applicant applicant = new Applicant("Abubakar Samson", 15, "Male","jjn");
+        Applicant applicant = new Applicant("Abubakar Samson", 15, "Male","jss");
+        Applicant applicant1 = new Applicant("Tunde Samson", 18, "Male","jss");
 
         StudentImpl studentImpl= new StudentImpl();
 //        System.out.println(studentImpl.studentCanTakeCourse("GST",110,student1,courseList));
@@ -50,33 +51,34 @@ public class Main {
 //
 //        System.out.println(teacherImpl.teacherCanTakeACourse("Maths",111,teacher1));
 
-        StudentUtils studentUtils = new StudentUtils();
-        List<Student> students = studentUtils.readStudentFile();
-        students.forEach(System.out::println);
+//        StudentUtils studentUtils = new StudentUtils();
+//        List<Student> students = studentUtils.readStudentFile();
+//        students.forEach(System.out::println);
+//
+//        CourseUtils courseUtils = new CourseUtils();
+//        List<Courses> coursesList = courseUtils.readFile();
+//        System.out.println(coursesList);
 
-        CourseUtils courseUtils = new CourseUtils();
-        List<Courses> coursesList = courseUtils.readFile();
-        System.out.println(coursesList);
 
-
-        TeacherImpl teacherImpl = new TeacherImpl();
-        StudentImpl studentImpl1 = new StudentImpl();
         PrincipalImpl principalImpl = new PrincipalImpl();
-
         StaffUtils staffUtils = new StaffUtils();
         CourseUtils courseUtil = new CourseUtils();
         StudentUtils studentUtil = new StudentUtils();
-        List<Student> studentList1 = studentUtil.readStudentFile();
-        List<Teacher> teachers = staffUtils.readTeacherFile();
         Staff principal1 = staffUtils.readPrincipalFile();
-        System.out.println(principal1);
-        List<Courses> courseList1 = courseUtil.readFile();
-        teachers.forEach(System.out::println);
-        courseList1.forEach(System.out::println);
-        teacherImpl.teacherCanTakeACourse("CHEM", "101", teachers.get(0));
+        List<Student> studentList1 = studentUtil.readStudentFile();
+        TeacherImpl teacherImpl = new TeacherImpl();
+
+//        List<Teacher> teachers = staffUtils.readTeacherFile();
+//        System.out.println(principal1);
+//        List<Courses> courseList1 = courseUtil.readFile();
+//        teachers.forEach(System.out::println);
+        teacherImpl.teacherCanTakeACourse("GEOGRAPHY", "GEO101", teacher1);
+        courseList.forEach(System.out::println);
+//        teacherImpl.teacherCanTakeACourse("HIS", "101", teachers.get(1));
+
         studentList1.forEach(System.out::println);
-        System.out.println(studentUtil.readHeader());
-//        principalImpl.expelStudent("Bad", true, principal1, studentList.get(1));
+//        System.out.println(studentUtil.readHeader());
+        principalImpl.principalCanAdmitAnApplicant( principal1, applicant, student1);
 //        System.out.println(principalImpl.canAdmitApplicant(applicant1, principal1));
 //        principalImpl.admitApplicant(applicant2, principal1);
     }

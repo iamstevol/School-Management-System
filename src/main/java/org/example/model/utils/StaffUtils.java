@@ -18,17 +18,17 @@ public class StaffUtils {
 
     public List<Teacher> readTeacherFile() {
         // The CourseUtils was created here to pass in the read courseFile into a new
-        // courseList for studentUtils
+        // courseList to compare with the Teacher courseList
         CourseUtils courseUtils = new CourseUtils();
         List<Courses> courses = courseUtils.readFile();
 
         // New studentList to compare the courseCode
         List<Teacher> teacherList = new ArrayList<>();
 
+        String line = "";
         try (BufferedReader br = new BufferedReader(new FileReader(FILE))) {
             br.readLine();
             br.readLine();
-            String line = "";
             while ((line = br.readLine()) != null) {
 
                 // to split the file by comma
@@ -63,8 +63,6 @@ public class StaffUtils {
         try (BufferedReader br = new BufferedReader(new FileReader(FILE))) {
             br.readLine();
             String[] column = br.readLine().split(",");
-//            String line = "";
-//            String[] column = line.split(",");
             principal = new Staff(column[0], Integer.parseInt(column[1]), column[2], column[3], column[4], StaffRoles.PRINCIPAL);
         } catch (IOException e) {
             e.printStackTrace();
@@ -72,69 +70,15 @@ public class StaffUtils {
         return principal;
     }
 
-    public void expelStudent(Student student) {
-        List<Student> studentList = studentUtils.readStudentFile();
-        int index = 0;
-        for (int i = 0; i < studentList.size(); i++) {
-            if (studentList.get(i).getName() == student.getName()) {
-                index = i;
-            }
-        }
-        studentList.remove(studentList.get(index));
 
-        try (BufferedWriter br = new BufferedWriter(new FileWriter("src/main/resources/StudentDOC - Sheet1 (1).csv"))) {
-            StringBuilder st = new StringBuilder();
-            for (Student student1 : studentList) {
-                st.append(student1.getName()).append(",");
-                st.append(student1.getAge()).append(",");
-                st.append(student1.getGender()).append(",");
-                st.append(student1.getStudentId()).append(",");
-                st.append(student1.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" "))).append(",");
-                st.append(student1.isViolateRule()).append("\n");
-            }
-            br.write(st.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Student has been expelled");
-    }
-
-
-
-    public void admitApplicant(Applicant applicant, Student student) {
-        List<Student> studentList = studentUtils.readStudentFile();
-
-        Courses courses1 = new Courses("MATH", "107");
-        Courses courses2 = new Courses("BIO", "107");
-        List<Courses> courses = new ArrayList<>(Arrays.asList(courses1, courses2));
-
-        studentList.add(new Student(applicant.getName(), applicant.getAge(), applicant.getGender(), 001, courses, false));
-
-        try (BufferedWriter br = new BufferedWriter(new FileWriter("src/main/resources/StudentDOC - Sheet1 (1).csv"))) {
-            StringBuilder st = new StringBuilder();
-            for (Student student1 : studentList) {
-                st.append(student1.getName()).append(",");
-                st.append(student1.getAge()).append(",");
-                st.append(student1.getGender()).append(",");
-                st.append(student1.getStudentId()).append(",");
-                st.append(student1.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" "))).append(",");
-                st.append(student1.isViolateRule()).append("\n");
-            }
-            br.write(st.toString());
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        System.out.println("Applicant has been admitted");
-    }
-
-    public void addCourseToTeacher(Teacher teacher, String courseName, String courseCode){
+    public void addCourseToTeacher(Teacher teacher, String courseName, String courseCode) {
         List<Teacher> teacherList = readTeacherFile();
-        for(Teacher teacher1 : teacherList){
-            if(Objects.equals(teacher1.getName(), teacher1.getName())){
+        for (Teacher teacher1 : teacherList) {
+            if (Objects.equals(teacher1.getName(), teacher.getName())) {
                 teacher1.getCourses().add(new Courses(courseName, courseCode));
             }
         }
-        try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/Staff - Sheet1 (1).csv"))){
+        try (BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/Staff1 - Sheet1 (1).csv"))) {
             StringBuilder st = new StringBuilder();
             StaffUtils staffUtil1 = new StaffUtils();
             st.append(staffUtil1.readPrincipalFile().getName()).append("\t");
@@ -144,7 +88,7 @@ public class StaffUtils {
             st.append(staffUtil1.readPrincipalFile().getQualification()).append("\t");
             st.append(staffUtil1.readPrincipalFile().getStaffRoles()).append("\t");
             st.append("\n");
-            for(Teacher list : teacherList) {
+            for (Teacher list : teacherList) {
                 st.append(list.getName()).append("\t");
                 st.append(list.getAge()).append("\t");
                 st.append(list.getGender()).append("\t");
@@ -155,12 +99,10 @@ public class StaffUtils {
                 st.append("\n");
             }
             bufferedWriter.write(st.toString());
-        }
-        catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
-        System.out.println(teacher.getName() + " can now take Course");
+        System.out.println(teacher.getName() + " course list has been updated successfully");
     }
-
 }
 

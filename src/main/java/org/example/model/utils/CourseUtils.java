@@ -15,9 +15,10 @@ public class CourseUtils {
         List<Courses> courseList = new ArrayList<>();
 
         String file = "src/main/resources/CourseDOC - Sheet1.csv";
+        String line= "";
         try(BufferedReader br = new BufferedReader(new FileReader(file))) {
             br.readLine();
-            String line= "";
+
             while((line = br.readLine()) !=null) {
                 String[] column = line.split(",");
 

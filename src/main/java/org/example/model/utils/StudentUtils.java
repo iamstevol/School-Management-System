@@ -1,10 +1,7 @@
 package org.example.model.utils;
 
 import org.example.model.enums.StaffRoles;
-import org.example.model.model.Courses;
-import org.example.model.model.Staff;
-import org.example.model.model.Student;
-import org.example.model.model.Teacher;
+import org.example.model.model.*;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -68,21 +65,26 @@ public class StudentUtils {
         return header;
     }
 
-    public void addCourseToStudent(Student student, String courseName, String courseCode){
+    public void addCourseToStudent(Student student1, String courseName, String courseCode){
         List<Student> studentList = readStudentFile();
-        for(Student student1 : studentList){
-            if(Objects.equals(student1.getName(), student1.getName())){
+        List<String> headerList = readHeader();
+        for(Student student : studentList){
+            if(Objects.equals(student.getName(), student1.getName())){
                 student1.getCourses().add(new Courses(courseName, courseCode));
             }
         }
         try(BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("src/main/resources/StudentDOC - Sheet1 (1).csv"))){
             StringBuilder st = new StringBuilder();
+            for (String header : headerList) {
+                st.append(header).append(",");
+            }
+            st.append("\n");
             for(Student list : studentList) {
                 st.append(list.getName()).append("\t");
                 st.append(list.getAge()).append("\t");
                 st.append(list.getGender()).append("\t");
                 st.append(list.getStudentId()).append("\t");
-                st.append(list.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" ", "[", "]")));
+                st.append(list.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" "))).append(",");
                 st.append(list.isViolateRule()).append("\t");
                 st.append("\n");
             }
@@ -91,7 +93,71 @@ public class StudentUtils {
         catch (Exception e){
             e.printStackTrace();
         }
-        System.out.println(student.getName() + " course list has been updated successfully");
+        System.out.println(student1.getName() + " course list has been updated successfully");
+    }
+
+
+    public void expelStudent(Student student) {
+        List<Student> studentList = readStudentFile();
+        int index = 0;
+        for (int i = 0; i < studentList.size(); i++) {
+            if (studentList.get(i).getName() == student.getName()) {
+                index = i;
+            }
+        }
+        studentList.remove(studentList.get(index));
+
+        try (BufferedWriter br = new BufferedWriter(new FileWriter("src/main/resources/StudentDOC - Sheet1 (1).csv"))) {
+            StringBuilder st = new StringBuilder();
+            for (Student student1 : studentList) {
+                st.append(student1.getName()).append(",");
+                st.append(student1.getAge()).append(",");
+                st.append(student1.getGender()).append(",");
+                st.append(student1.getStudentId()).append(",");
+                st.append(student1.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" "))).append(",");
+                st.append(student1.isViolateRule());
+                st.append("\n");
+            }
+            br.write(st.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Student has been expelled");
+    }
+
+
+    public void admitApplicant(Applicant applicant, Student student) {
+        List<Student> studentList = readStudentFile();
+        List<String> headerList = readHeader();
+
+        Courses courses1 = new Courses("MATH", "107");
+        Courses courses2 = new Courses("BIO", "107");
+        List<Courses> courses = new ArrayList<>(Arrays.asList(courses1, courses2));
+
+        studentList.add(new Student(applicant.getName(), applicant.getAge(), applicant.getGender(), 001, courses, false));
+
+        try (BufferedWriter br = new BufferedWriter(new FileWriter("src/main/resources/StudentDOC - Sheet1 (1).csv"))) {
+            StringBuilder st = new StringBuilder();
+
+            for(String header : headerList) {
+                st.append(header).append(",");
+            }
+            st.append("\n");
+
+            for (Student student1 : studentList) {
+                st.append(student1.getName()).append(",");
+                st.append(student1.getAge()).append(",");
+                st.append(student1.getGender()).append(",");
+                st.append(student1.getStudentId()).append(",");
+                st.append(student1.getCourses().stream().map(Courses::getCourseName).collect(Collectors.joining(" "))).append(",");
+                st.append(student1.isViolateRule());
+                st.append("\n");
+            }
+            br.write(st.toString());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Successfully admitted into the school");
     }
 }
 

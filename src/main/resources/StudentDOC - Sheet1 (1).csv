@@ -1,6 +1,8 @@
-FULLNAME,AGE,GENDER,ID,COURSES ,isViolateRule
-Rachael Banwo,14,F,101,"ENGLISH BIOLOGY",FALSE
-Femi Adebayo,15,M,102,"ENGLISH MATHS",FALSE
-Tunde Ednut,17,M,103,"CHEMISTRY ENGLISH",FALSE
-Tobi Oladele,14,M,104,"BIOLOGY MATHS",FALSE
-Daniel Victor,13,M,105,"CHEMISTRY PHYSICS",FALSE
+FULLNAME,AGE,GENDER,ID,COURSES ,isViolateRule,
+Rachael Banwo,14,F,101,,false
+Femi Adebayo,15,M,102,,false
+Tunde Ednut,17,M,103,,false
+Tobi Oladele,14,M,104,,false
+Daniel Victor,13,M,105,,false
+Abubakar Samson,15,Male,1,,false
+Abubakar Samson,15,Male,1,MATH BIO,false
