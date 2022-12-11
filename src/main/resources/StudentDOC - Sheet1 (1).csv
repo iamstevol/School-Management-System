@@ -1,8 +1,0 @@
-FULLNAME,AGE,GENDER,ID,COURSES ,isViolateRule,
-Rachael Banwo,14,F,101,,false
-Femi Adebayo,15,M,102,,false
-Tunde Ednut,17,M,103,,false
-Tobi Oladele,14,M,104,,false
-Daniel Victor,13,M,105,,false
-Abubakar Samson,15,Male,1,,false
-Abubakar Samson,15,Male,1,MATH BIO,false

@@ -4,12 +4,11 @@ import org.example.model.model.*;
 import org.example.model.services.serviceImplementation.PrincipalImpl;
 import org.example.model.services.serviceImplementation.StudentImpl;
 import org.example.model.services.serviceImplementation.TeacherImpl;
-import org.example.model.utils.CourseUtils;
-import org.example.model.utils.StaffUtils;
-import org.example.model.utils.StudentUtils;
-//import org.example.model.utils.StudentUtils;
+import org.example.model.utils.Implementation.CourseUtilsImpl;
+import org.example.model.utils.Implementation.StaffUtilsImpl;
+import org.example.model.utils.Implementation.StudentUtilsImpl;
+//import org.example.model.utils.Implementation.StudentUtilsImpl;
 
-import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,6 +19,8 @@ public class Main {
         //since the authority of principal is two, I used list<Authority>
         List<Authority> authorityList = new ArrayList<>(Arrays.asList(Authority.ADMIT, Authority.EXPEL));
 //        Principal principal = new Principal("Mr Babalola Elijah", 52, "Male","AIF001","BSc", StaffRoles.PRINCIPAL, authorityList);
+
+
 
         Courses course1 = new Courses("BIOLOGY", "101");
         Courses course2 = new Courses("MATHS", "107");
@@ -42,45 +43,24 @@ public class Main {
         Applicant applicant = new Applicant("Abubakar Samson", 15, "Male","jss");
         Applicant applicant1 = new Applicant("Tunde Samson", 18, "Male","jss");
 
+
         StudentImpl studentImpl= new StudentImpl();
-//        System.out.println(studentImpl.studentCanTakeCourse("GST",110,student1,courseList));
-//        PrincipalImpl principalService = new PrincipalImpl();
-//        System.out.println(principalService.principalCanAdmitAnApplicant(principal, applicant, 23));
-//        System.out.println(principalService.principalCanExpelAStudent(principal, student2, true));
-//        TeacherImpl teacherImpl = new TeacherImpl();
-//
-//        System.out.println(teacherImpl.teacherCanTakeACourse("Maths",111,teacher1));
-
-//        StudentUtils studentUtils = new StudentUtils();
-//        List<Student> students = studentUtils.readStudentFile();
-//        students.forEach(System.out::println);
-//
-//        CourseUtils courseUtils = new CourseUtils();
-//        List<Courses> coursesList = courseUtils.readFile();
-//        System.out.println(coursesList);
-
-
         PrincipalImpl principalImpl = new PrincipalImpl();
-        StaffUtils staffUtils = new StaffUtils();
-        CourseUtils courseUtil = new CourseUtils();
-        StudentUtils studentUtil = new StudentUtils();
-        Staff principal1 = staffUtils.readPrincipalFile();
+        StaffUtilsImpl staffUtilsImpl = new StaffUtilsImpl();
+        List<Teacher> teachers= staffUtilsImpl.readTeacherFile();
+        CourseUtilsImpl courseUtil = new CourseUtilsImpl();
+        StudentUtilsImpl studentUtil = new StudentUtilsImpl();
+        Staff principal1 = staffUtilsImpl.readPrincipalFile();
         List<Student> studentList1 = studentUtil.readStudentFile();
+        List<Courses> coursesList = courseUtil.readFile();
         TeacherImpl teacherImpl = new TeacherImpl();
 
-//        List<Teacher> teachers = staffUtils.readTeacherFile();
-//        System.out.println(principal1);
-//        List<Courses> courseList1 = courseUtil.readFile();
-//        teachers.forEach(System.out::println);
-        teacherImpl.teacherCanTakeACourse("GEOGRAPHY", "GEO101", teacher1);
-        courseList.forEach(System.out::println);
-//        teacherImpl.teacherCanTakeACourse("HIS", "101", teachers.get(1));
-
         studentList1.forEach(System.out::println);
-//        System.out.println(studentUtil.readHeader());
-        principalImpl.principalCanAdmitAnApplicant( principal1, applicant, student1);
-//        System.out.println(principalImpl.canAdmitApplicant(applicant1, principal1));
-//        principalImpl.admitApplicant(applicant2, principal1);
+        courseList.forEach(System.out::println);
+        staffUtilsImpl.readTeacherFile().forEach(System.out::println);
+        teacherImpl.teacherCanTakeACourse("GEOGRAPHY", "GEO101", teachers.get(1));
+        studentImpl.studentCanTakeCourse("GEOGRAPHY", "GEO101", studentList1.get(1));
+        principalImpl.principalCanAdmitAnApplicant(principal1, applicant);
+        principalImpl.principalCanExpelAStudent(principal1, studentList1.get(2), true);
     }
-
 }

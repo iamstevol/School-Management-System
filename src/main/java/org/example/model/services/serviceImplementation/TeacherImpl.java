@@ -1,15 +1,14 @@
 package org.example.model.services.serviceImplementation;
 
 import org.example.model.model.Courses;
-import org.example.model.model.Staff;
 import org.example.model.model.Teacher;
 import org.example.model.services.TeacherServices;
-import org.example.model.utils.StaffUtils;
+import org.example.model.utils.Implementation.StaffUtilsImpl;
 
 import java.util.List;
 
 public class TeacherImpl implements TeacherServices {
-    private final StaffUtils staffUtils = new StaffUtils();
+    private final StaffUtilsImpl staffUtilsImpl = new StaffUtilsImpl();
     public void teacherCanTakeACourse(String courseName, String courseCode, Teacher teacher) {
         List<Courses> coursesList = teacher.getCourses();
         for (int i = 0; i < coursesList.size(); i++) {
@@ -17,7 +16,7 @@ public class TeacherImpl implements TeacherServices {
                 System.out.println(teacher.getName() + " currently takes this " + courseName);
             }
         }
-        staffUtils.addCourseToTeacher(teacher, courseName, courseCode);
+        staffUtilsImpl.addCourseToTeacher(teacher, courseName, courseCode);
     }
 }
 

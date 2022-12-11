@@ -7,5 +7,5 @@ import org.example.model.model.Student;
 import java.util.List;
 
 public interface StudentServices {
-    void studentCanTakeCourse(String courseName, String courseCode, Student student1, List<Courses> courseList);
+    void studentCanTakeCourse(String courseName, String courseCode, Student student1);
 }

@@ -4,21 +4,21 @@ import org.example.model.model.Applicant;
 import org.example.model.model.Staff;
 import org.example.model.model.Student;
 import org.example.model.services.PrincipalServices;
-import org.example.model.utils.StaffUtils;
-import org.example.model.utils.StudentUtils;
+import org.example.model.utils.Implementation.StaffUtilsImpl;
+import org.example.model.utils.Implementation.StudentUtilsImpl;
 
 public class PrincipalImpl implements PrincipalServices {
 
-    StaffUtils staffUtils = new StaffUtils();
-    StudentUtils studentUtils = new StudentUtils();
+    StaffUtilsImpl staffUtilsImpl = new StaffUtilsImpl();
+    StudentUtilsImpl studentUtilsImpl = new StudentUtilsImpl();
     final int maxAge =30;
     final int minAge = 11;
 
-    public void principalCanAdmitAnApplicant(Staff principal, Applicant applicant, Student student) {
+    public void principalCanAdmitAnApplicant(Staff principal, Applicant applicant) {
         if (applicant.getAge() < minAge || applicant.getAge() > maxAge) {
             System.out.println("Sorry " + applicant.getName() + ", you cannot be admitted due to age restriction.");
         } else {
-            studentUtils.admitApplicant(applicant, student);
+            studentUtilsImpl.admitApplicant(applicant);
         }
     }
 
@@ -26,7 +26,7 @@ public class PrincipalImpl implements PrincipalServices {
         if (student.isViolateRule() == violateRule) {
             System.out.println(principal.getName()+ " cannot " + student.getName());
         } else {
-            studentUtils.expelStudent(student);
+            studentUtilsImpl.expelStudent(student);
         }
     }
 }
