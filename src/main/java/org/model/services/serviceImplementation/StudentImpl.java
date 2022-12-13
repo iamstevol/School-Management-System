@@ -1,11 +1,8 @@
-package org.example.model.services.serviceImplementation;
+package org.model.services.serviceImplementation;
 
-import org.example.model.model.Courses;
-import org.example.model.model.Student;
-import org.example.model.services.StudentServices;
-import org.example.model.utils.Implementation.StudentUtilsImpl;
-
-import java.util.List;
+import org.model.model.Student;
+import org.model.services.StudentServices;
+import org.model.utils.Implementation.StudentUtilsImpl;
 
 public class StudentImpl implements StudentServices {
     StudentUtilsImpl studentUtilsImpl = new StudentUtilsImpl();

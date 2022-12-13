@@ -1,11 +1,10 @@
-package org.example.model.model;
+package org.model.model;
 
-import org.example.model.enums.Authority;
-import org.example.model.enums.StaffRoles;
+import org.model.enums.StaffRoles;
 
 import java.util.List;
 
-public class Teacher extends Staff{
+public class Teacher extends Staff {
     private List<Courses> courses;
 
     public Teacher(String name, int age, String gender, String staffID, String qualification, StaffRoles staffRoles, List<Courses> courses) {
@@ -23,8 +22,8 @@ public class Teacher extends Staff{
 
     @Override
     public String toString() {
-        return "Teacher{" +
-                "courses=" + courses +
-                "} " + super.toString();
+        return super.toString() +
+                " courses=" + courses +
+                "} " ;
     }
 }

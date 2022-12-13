@@ -1,8 +1,8 @@
-package org.example.model.services;
+package org.model.services;
 
-import org.example.model.model.Applicant;
-import org.example.model.model.Staff;
-import org.example.model.model.Student;
+import org.model.model.Applicant;
+import org.model.model.Staff;
+import org.model.model.Student;
 
 public interface PrincipalServices {
     void principalCanAdmitAnApplicant(Staff principal, Applicant applicant);

@@ -1,11 +1,11 @@
-package org.example.model.services.serviceImplementation;
+package org.model.services.serviceImplementation;
 
-import org.example.model.model.Applicant;
-import org.example.model.model.Staff;
-import org.example.model.model.Student;
-import org.example.model.services.PrincipalServices;
-import org.example.model.utils.Implementation.StaffUtilsImpl;
-import org.example.model.utils.Implementation.StudentUtilsImpl;
+import org.model.model.Applicant;
+import org.model.model.Staff;
+import org.model.model.Student;
+import org.model.services.PrincipalServices;
+import org.model.utils.Implementation.StaffUtilsImpl;
+import org.model.utils.Implementation.StudentUtilsImpl;
 
 public class PrincipalImpl implements PrincipalServices {
 

@@ -1,6 +1,6 @@
-package org.example.model.utils;
+package org.model.utils;
 
-import org.example.model.model.Courses;
+import org.model.model.Courses;
 
 import java.util.List;
 

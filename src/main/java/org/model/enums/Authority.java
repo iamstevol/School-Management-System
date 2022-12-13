@@ -1,4 +1,4 @@
-package org.example.model.enums;
+package org.model.enums;
 
 public enum Authority {
     EXPEL,

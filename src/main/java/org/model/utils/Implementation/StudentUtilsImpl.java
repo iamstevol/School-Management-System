@@ -1,8 +1,9 @@
-package org.example.model.utils.Implementation;
+package org.model.utils.Implementation;
 
-import org.example.model.model.*;
-import org.example.model.utils.Implementation.CourseUtilsImpl;
-import org.example.model.utils.StudentUtils;
+import org.model.model.Applicant;
+import org.model.model.Courses;
+import org.model.model.Student;
+import org.model.utils.StudentUtils;
 
 import java.io.*;
 import java.util.ArrayList;

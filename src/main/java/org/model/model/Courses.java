@@ -1,6 +1,4 @@
-package org.example.model.model;
-
-import java.util.List;
+package org.model.model;
 
 public class Courses {
     private String courseName;

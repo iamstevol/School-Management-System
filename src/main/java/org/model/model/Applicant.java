@@ -1,6 +1,6 @@
-package org.example.model.model;
+package org.model.model;
 
-public class Applicant extends User{
+public class Applicant extends User {
     private String classApplied;
 
     public Applicant(String name, int age, String gender, String classApplied) {

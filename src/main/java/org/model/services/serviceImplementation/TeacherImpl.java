@@ -1,9 +1,9 @@
-package org.example.model.services.serviceImplementation;
+package org.model.services.serviceImplementation;
 
-import org.example.model.model.Courses;
-import org.example.model.model.Teacher;
-import org.example.model.services.TeacherServices;
-import org.example.model.utils.Implementation.StaffUtilsImpl;
+import org.model.model.Courses;
+import org.model.model.Teacher;
+import org.model.services.TeacherServices;
+import org.model.utils.Implementation.StaffUtilsImpl;
 
 import java.util.List;
 

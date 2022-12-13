@@ -1,11 +1,8 @@
-package org.example.model.model;
+package org.model.model;
 
-import org.example.model.enums.Authority;
-import org.example.model.enums.StaffRoles;
+import org.model.enums.StaffRoles;
 
-import java.util.List;
-
-public class Staff extends User{
+public class Staff extends User {
 
         private String staffID;
         private String qualification;
@@ -45,11 +42,10 @@ public class Staff extends User{
 
     @Override
     public String toString() {
-        return "Staff{" +
-                "staffID='" + staffID + '\'' +
+        return super.toString() +
+                " staffID='" + staffID + '\'' +
                 ", qualification='" + qualification + '\'' +
-                ", staffRoles=" + staffRoles +
-                "} " + super.toString();
+                ", staffRoles=" + staffRoles ;
     }
 }
 

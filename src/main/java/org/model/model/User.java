@@ -1,4 +1,4 @@
-package org.example.model.model;
+package org.model.model;
 
 public class User {
     private String name;
@@ -37,7 +37,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "Student (" +
+        return
                 "name:" + name +
                 ", age:" + age +
                 ", gender:" + gender ;

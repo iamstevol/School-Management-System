@@ -1,8 +1,10 @@
-package org.example.model.utils.Implementation;
+package org.model.utils.Implementation;
 
-import org.example.model.enums.StaffRoles;
-import org.example.model.model.*;
-import org.example.model.utils.StaffUtils;
+import org.model.enums.StaffRoles;
+import org.model.model.Courses;
+import org.model.model.Staff;
+import org.model.model.Teacher;
+import org.model.utils.StaffUtils;
 
 import java.io.*;
 import java.util.ArrayList;

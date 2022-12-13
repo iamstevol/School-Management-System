@@ -1,7 +1,7 @@
-package org.example.model.utils.Implementation;
+package org.model.utils.Implementation;
 
-import org.example.model.model.Courses;
-import org.example.model.utils.CourseUtils;
+import org.model.model.Courses;
+import org.model.utils.CourseUtils;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

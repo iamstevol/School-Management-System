@@ -1,12 +1,12 @@
-import org.example.model.enums.StaffRoles;
-import org.example.model.enums.Authority;
-import org.example.model.model.*;
-import org.example.model.services.serviceImplementation.PrincipalImpl;
-import org.example.model.services.serviceImplementation.StudentImpl;
-import org.example.model.services.serviceImplementation.TeacherImpl;
-import org.example.model.utils.Implementation.CourseUtilsImpl;
-import org.example.model.utils.Implementation.StaffUtilsImpl;
-import org.example.model.utils.Implementation.StudentUtilsImpl;
+import org.example.example.model.enums.StaffRoles;
+import org.example.example.model.enums.Authority;
+import org.example.example.model.model.*;
+import org.example.example.model.services.serviceImplementation.PrincipalImpl;
+import org.example.example.model.services.serviceImplementation.StudentImpl;
+import org.example.example.model.services.serviceImplementation.TeacherImpl;
+import org.example.example.model.utils.Implementation.CourseUtilsImpl;
+import org.example.example.model.utils.Implementation.StaffUtilsImpl;
+import org.example.example.model.utils.Implementation.StudentUtilsImpl;
 //import org.example.model.utils.Implementation.StudentUtilsImpl;
 
 import java.util.ArrayList;
@@ -55,12 +55,12 @@ public class Main {
         List<Courses> coursesList = courseUtil.readFile();
         TeacherImpl teacherImpl = new TeacherImpl();
 
-        studentList1.forEach(System.out::println);
-        courseList.forEach(System.out::println);
-        staffUtilsImpl.readTeacherFile().forEach(System.out::println);
-        teacherImpl.teacherCanTakeACourse("GEOGRAPHY", "GEO101", teachers.get(1));
-        studentImpl.studentCanTakeCourse("GEOGRAPHY", "GEO101", studentList1.get(1));
-        principalImpl.principalCanAdmitAnApplicant(principal1, applicant);
+//        studentList1.forEach(System.out::println);
+//        courseList.forEach(System.out::println);
+//        staffUtilsImpl.readTeacherFile().forEach(System.out::println);
+//        teacherImpl.teacherCanTakeACourse("GEOGRAPHY", "GEO101", teachers.get(1));
+//        studentImpl.studentCanTakeCourse("GEOGRAPHY", "GEO101", studentList1.get(1));
+//        principalImpl.principalCanAdmitAnApplicant(principal1, applicant);
         principalImpl.principalCanExpelAStudent(principal1, studentList1.get(2), true);
     }
 }
